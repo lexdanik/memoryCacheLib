@@ -14,7 +14,7 @@ func main() {
     fmt.Println(userId)
     
     cache.Delete("userId") // Delete value from cache
-    userId := cache.Get("userId")
+    userId = cache.Get("userId")
     
     fmt.Println(userId)
 }
