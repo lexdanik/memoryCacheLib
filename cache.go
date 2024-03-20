@@ -1,6 +1,9 @@
 package cache
 
-import "time"
+import (
+	"errors"
+	"time"
+)
 
 type Cache struct {
 	items             map[string]*CacheItem
@@ -47,7 +50,11 @@ func (c *Cache) Set(key string, value interface{}, duration time.Duration) {
 }
 
 func (c *Cache) Get(key string) (interface{}, error) {
-	return c.items[key]
+	err := nil
+	if c.items[key] == nil {
+		err = errors.New("cache not exist")
+	}
+	return c.items[key], err
 }
 
 func (c *Cache) Delete(key string) {
