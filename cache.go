@@ -46,7 +46,7 @@ func (c *Cache) Set(key string, value interface{}, duration time.Duration) {
 	}
 }
 
-func (c *Cache) Get(key string) interface{} {
+func (c *Cache) Get(key string) (interface{}, error) {
 	return c.items[key]
 }
 
